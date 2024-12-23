@@ -47,13 +47,15 @@ $index: calc(1vw + 1vh)
     &__wrapper
       justify-content: space-between
       &_element 
-        @include utils.adaptiveValue("width", $navigationWidth + 200, $navigationWto)
-        @include utils.adaptiveValue("height", $navigationHeight + 100, $navigationHto)
+        @include utils.adaptiveValue("width", $navigationWidth + 100, $navigationWto)
+        @include utils.adaptiveValue("height", $navigationHeight + 70, $navigationHto)
 
 
 .nav-active
   $sizeActiveFrom: 150
   $sizeActiveTo: math.div($sizeActiveFrom, 2) 
   @include utils.adaptiveValue("width", $sizeActiveFrom, $sizeActiveTo)
+
+  transition: width 0.3s ease-in-out
 
 

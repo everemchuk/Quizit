@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 const $sound = document.getElementById('sound')
 const audio = document.getElementById('audio')
 
-audio.volume = 0.1
+audio.volume = 0.05
 audio.play()
 
 const lock = () => {

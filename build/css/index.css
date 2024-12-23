@@ -162,12 +162,12 @@ body {
 }
 @media (min-width: 125em) {
   body {
-    height: 4000px;
+    height: 4700px;
   }
 }
 @media (max-width: 29.99875em) {
   body {
-    height: 3330px;
+    height: 3350px;
   }
 }
 body .lock {
@@ -867,18 +867,18 @@ body .loaded {
 }
 @media (max-width: 29.99875em) and (min-width: 85.43625em) {
   .navigation__wrapper_element {
-    width: 18.75rem;
+    width: 12.5rem;
   }
 }
 @media (max-width: 29.99875em) and (min-width: 20em) and (max-width: 85.43625em) {
-  @supports (width: clamp( 3.125rem , -1.6506404134rem  +  23.8782020669vw , 18.75rem )) {
+  @supports (width: clamp( 3.125rem , 0.259615752rem  +  14.3269212401vw , 12.5rem )) {
     .navigation__wrapper_element {
-      width: clamp( 3.125rem , -1.6506404134rem  +  23.8782020669vw , 18.75rem );
+      width: clamp( 3.125rem , 0.259615752rem  +  14.3269212401vw , 12.5rem );
     }
   }
-  @supports not (width: clamp( 3.125rem , -1.6506404134rem  +  23.8782020669vw , 18.75rem )) {
+  @supports not (width: clamp( 3.125rem , 0.259615752rem  +  14.3269212401vw , 12.5rem )) {
     .navigation__wrapper_element {
-      width: calc(3.125rem + 15.625 * (100vw - 20rem) / 65.43625);
+      width: calc(3.125rem + 9.375 * (100vw - 20rem) / 65.43625);
     }
   }
 }
@@ -889,18 +889,18 @@ body .loaded {
 }
 @media (max-width: 29.99875em) and (min-width: 85.43625em) {
   .navigation__wrapper_element {
-    height: 7.5rem;
+    height: 5.625rem;
   }
 }
 @media (max-width: 29.99875em) and (min-width: 20em) and (max-width: 85.43625em) {
-  @supports (height: clamp( 0.625rem , -1.4762817819rem  +  10.5064089094vw , 7.5rem )) {
+  @supports (height: clamp( 0.625rem , -0.9032049323rem  +  7.6410246614vw , 5.625rem )) {
     .navigation__wrapper_element {
-      height: clamp( 0.625rem , -1.4762817819rem  +  10.5064089094vw , 7.5rem );
+      height: clamp( 0.625rem , -0.9032049323rem  +  7.6410246614vw , 5.625rem );
     }
   }
-  @supports not (height: clamp( 0.625rem , -1.4762817819rem  +  10.5064089094vw , 7.5rem )) {
+  @supports not (height: clamp( 0.625rem , -0.9032049323rem  +  7.6410246614vw , 5.625rem )) {
     .navigation__wrapper_element {
-      height: calc(0.625rem + 6.875 * (100vw - 20rem) / 65.43625);
+      height: calc(0.625rem + 5 * (100vw - 20rem) / 65.43625);
     }
   }
 }
@@ -908,6 +908,9 @@ body .loaded {
   .navigation__wrapper_element {
     height: 0.625rem;
   }
+}
+.nav-active {
+  transition: width 0.3s ease-in-out;
 }
 @media (min-width: 85.43625em) {
   .nav-active {
