@@ -1,0 +1,131 @@
+
+@use "sass:math"
+
+@use "../base/_variables.sass" as vars
+@use "../base/_utilities.sass" as utils
+@use "../base/_grid.sass" as grid
+
+$gap: 30px
+$position: 2
+$sideLong: 30
+$sideShort: 20
+
+$index: calc(1vw + 1vh)
+
+@function position($side)
+  $result: calc((($side / $position) * $index) + $gap)
+  @return $result
+
+@function size($side)
+  $result: calc($side * $index)
+  @return $result
+
+::-webkit-scrollbar
+  width: 0
+
+.container
+  width: 100%
+  height: 100%
+
+  position: fixed
+  z-index: vars.$low
+  
+  perspective: 1500px
+
+.gallery
+  transform-style: preserve-3d
+  width: inherit
+  height: inherit
+
+.frame
+  width: 100%
+  height: 100%
+
+  position: absolute
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  transition: transform .75s vars.$scroll, opacity .75s ease
+  transform-style: preserve-3d
+  will-change: transform
+  &-bg
+    background-color: rgb(from var(--theme) r g b / 50%)
+  &-solid
+    background-color: var(--theme)
+  &__content
+    font-weight: 900
+    color: var(--color)
+    &_media
+      position: relative
+
+      width: size($sideShort)
+      height: size($sideLong)
+
+      background-position: center
+      background-size: 100% 85%
+      
+
+      border-radius: 50px
+      border-bottom: calc($index * 0.7)
+      border-right: calc($index * 0.7)
+      border-top: calc(($index * 0.7) / 1.8)
+      border-left: calc(($index * 0.7) / 1.8)
+      border-style: solid
+      border-color: var(--color)
+      
+    &_text
+      position: relative
+      .main-title
+        text-align: center
+        @include utils.adaptiveValue("font-size", vars.$mainTitle, math.div(vars.$mainTitle, 2), 0, grid.$maxWidth)
+      .title
+        @include utils.adaptiveValue("font-size", vars.$mainTitle, math.div(vars.$mainTitle, 2), 0, grid.$maxWidth)
+        @include utils.adaptiveValue("margin-bottom", vars.$titleSpace, math.div(vars.$titleSpace, 2), 0, grid.$maxWidth)
+      .subtitle
+        @include utils.adaptiveValue("font-size", vars.$text, math.div(vars.$text, 2), 0, grid.$maxWidth)
+      .li
+        @include utils.adaptiveValue("font-size", vars.$text, math.div(vars.$text, 2), 0, grid.$maxWidth)
+        list-style-type: disc
+        &:not(:last-child)
+          margin: 0px 0px 8px 0px
+  &__video
+    border-radius: 50px
+    border-bottom: calc($index * 1.4)
+    border-right: calc($index * 1.4)
+    border-top: calc($index * 0.9)
+    border-left: calc($index * 0.9)
+    border-style: solid
+    border-color: var(--color)
+
+    width: 150%
+  &__circle 
+    border-radius: 50%
+    border-bottom: calc($index * 0.7)
+    border-right: calc($index * 0.7)
+    border-top: calc(($index * 0.7) / 1.8)
+    border-left: calc(($index * 0.7) / 1.8)
+    border-style: solid
+    border-color: var(--color)
+
+    
+    display: block
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 50px
+    width: 50%
+
+.underline 
+  text-decoration: underline var(--color)
+
+.tc
+  text-align: center
+.hw
+  max-width: 560px
+.fw
+  max-width: 800px
+.left
+  right: position($sideShort)
+.right
+  left: position($sideShort)

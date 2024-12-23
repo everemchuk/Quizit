@@ -1,0 +1,136 @@
+
+@use "sass:math"
+@use "../base/_utilities.sass" as utils
+@use "../base/_variables.sass" as vars
+@use "../base/_grid.sass" as grid
+@use "../components/animations/_icons.sass"
+
+$zIndex: 100
+
+$size: 100
+
+$buttonFrom: $size
+$buttonTo: math.div($buttonFrom, 1.7)
+$interfaceFrom: $buttonFrom * 3
+$interfaceTo: math.div($interfaceFrom, 1.7)
+$borderFrom: math.div($size, 14) // $size / 14 = 7px initial value
+$borderTo: $borderFrom - 1.7
+
+.menu
+  position: relative
+  &__button
+    @include utils.adaptiveValue("width", $buttonFrom, $buttonTo)
+    @include utils.adaptiveValue("height", $buttonFrom, $buttonTo)
+
+    position: relative
+    &-wrapper
+      width: 100%
+      height: 100%
+
+      position: relative
+      z-index: $zIndex + 2
+
+      display: flex
+      justify-content: center
+      align-items: center
+
+      background-color: var(--theme)
+      border-radius: 50%
+
+      border-style: solid
+      border-color: var(--color)
+      @include utils.adaptiveValue("border-width", $borderFrom, $borderTo)
+
+      transition: transform .2s vars.$bounce 0s
+    &-border
+      position: absolute
+      top: 4%
+      left: 4%
+      z-index: $zIndex - 1
+
+      width: 100%
+      height: 100%
+
+      border-radius: 50%
+      background-color: var(--color)
+  &__interface
+    position: absolute
+    top: 0
+    left: 0
+    z-index: $zIndex + 1
+
+    @include utils.adaptiveValue("width", $buttonFrom, $buttonTo)
+
+    transition: height .5s vars.$bounce 0s, opacity .5s vars.$bounce 0s
+    &-wrapper
+      width: 100%
+      height: 100%
+
+      display: flex
+      flex-direction: column
+
+      position: relative
+      z-index: $zIndex
+
+      border-radius: 100px
+      background-color: var(--theme)
+
+      border-style: solid
+      border-color: var(--color)
+      @include utils.adaptiveValue("border-width", $borderFrom, $borderTo)
+
+      &> .element
+        flex: 0 0 33.333%
+    &-border
+      position: absolute
+      top: 1%
+      left: 4%
+      z-index: $zIndex - 1
+
+      width: 100%
+      height: 100%
+
+      border-radius: 100px
+      background-color: var(--color)
+
+[data-mask="true"]
+  pointer-events: none
+[data-mask="false"]
+  pointer-events: auto
+
+@media (any-hover: hover)
+  .menu__button:hover
+    > .menu__button-wrapper
+      transform: translate(2%, 2%)
+.menu__button:active
+  > .menu__button-wrapper
+    transform: translate(3%, 3%)
+
+.menu[data-menu-condition="show"]
+  @media (any-hover: hover)
+    > .menu__button:hover
+      > .menu__button-wrapper
+        transform: translate(0px, 0px)
+.menu[data-menu-condition="show"]
+  > .menu__button:active
+    > .menu__button-wrapper
+      transform: translate(3%, 3%)
+
+.menu[data-menu-condition="hide"]
+  > .menu__interface
+    @include utils.adaptiveValue("height", 0, 0)
+    opacity: 0
+    visibility: hidden
+    .theme
+      transform: scale(0)
+    .sound
+      transform: scale(0)
+.menu[data-menu-condition="show"]
+  > .menu__interface
+    @include utils.adaptiveValue("height", $interfaceFrom, $interfaceTo)
+    opacity: 1
+    visibility: visible
+    .theme
+      transform: scale(1)
+    .sound
+      transform: scale(1)

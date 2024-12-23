@@ -1,0 +1,80 @@
+
+- const bullets = ['Its absolutely FREE', 'New technology', 'Fresh interface that make you happy! ']
+
+.container 
+  section.gallery 
+
+    .frame.frame-bg#red
+      .frame__content
+        .frame__content_text
+          h1.main-title QUIZIT - CHALLANGE YOURSELF
+
+    .frame
+      .frame__content
+        .frame__content_media.left(style="background-image: url(images/redask.webp);")
+
+    .frame.frame-bg(data="redframe")
+      .frame__content
+        .frame__content_text.right.hw
+          h2.title What is Quizit?
+          p.subtitle  Quizit - web application/platform that provides a lot of various quizzes.
+
+    .frame.frame-solid#blue
+      .frame__content
+        .frame__content_text.tc.fw
+          h2.title QUIZIT
+          p.subtitle
+                  | could be useful for schools, colleges, and universities 
+                  | in order to take consistent and accurate quizzes on any topics that they needed. 
+                  | Also Quizit includes competition mode in order to make tournaments beetwen students.
+    
+    .frame 
+
+    .frame
+      .frame__content
+        .frame__content_media.right(style="background-image: url(images/blueask.webp);")
+
+    .frame.frame-solid
+      .frame__content
+        .frame__content_text.left.hw
+          h2.title Why is Quizit?
+          p.subtitle
+            ul
+              each element in bullets
+                li.li #{element}
+
+    .frame
+    .frame
+
+    .frame#yellow
+      video(src="../../files/video.mp4" autoplay loop muted).frame__video
+
+    .frame 
+
+    .frame.frame-bg#yellow
+      .frame__content
+        .frame__content_text
+          h1.main-title DO YOU LIKE IT?
+    
+    .frame
+
+    .frame.frame-solid#lightblue
+      .frame__content 
+        .frame__content_text
+          h1.main-title TRY IT NOW!<br>AND FIND OUT HOW IT IS!
+
+    .frame
+
+    .frame
+      .frame__content
+        image(src="images/developer-circle.webp").frame__circle
+        .frame__content_text
+          h1.main-title Developer
+          .title.tc Yevhen Veremchuk
+          h1.main-title.underline everemchuk1978@gmail.com
+
+
+audio(src="../files/music.mp3" volume="0.5" autoplay loop muted)#audio
+
+
+

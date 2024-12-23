@@ -1,0 +1,19 @@
+
+@use "../base/_variables.sass" as vars
+
+@use "../components/animations/_logos.sass"
+@use "../components/_menu.sass"
+@use "../components/_navigation.sass"
+
+.header
+  width: 100%
+
+  position: fixed
+
+  z-index: vars.$super
+  &__container
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+
+    padding: 35px 45px 0px 35px

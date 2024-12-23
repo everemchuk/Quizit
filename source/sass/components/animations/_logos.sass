@@ -1,0 +1,24 @@
+
+@use "sass:math"
+
+@use "../../base/_utilities.sass" as utils
+
+//! Loader
+
+/* .loader
+      width: 300px
+      height: 300px
+    #icon
+      transform: translate(60px, 60px)
+
+
+//! Logo
+$initialSize: 120
+
+$logoFrom: $initialSize
+$logoTo: math.div($initialSize, 2)
+
+.logo
+  @include utils.adaptiveValue("width", $logoFrom, $logoTo)
+#logo
+  transform: translate(9%, 6%)

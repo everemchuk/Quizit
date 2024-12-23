@@ -1,0 +1,41 @@
+
+@use "_variables.sass" as vars
+@use "_grid.sass" as grid
+
+// CSS переменые
+:root
+  --color: #{vars.$red}
+  --theme: undefined
+  
+  --progress-red: 50%
+  --progress-blue: 50%
+  --progress-yellow: 50%
+  --progress-lightBlue: 50%
+
+@media (prefers-color-scheme: dark)
+  :root
+    --theme: #{vars.$dark}
+@media (prefers-color-scheme: light)
+  :root
+    --theme: #{vars.$light}
+
+// Настройка body
+body
+  background-color: var(--theme)
+  height: 3600px
+  @include grid.breakpoint("tv", "large")
+    height: 4000px
+  @include grid.breakpoint("mobileSmall", "normal")
+    height: 3330px
+  
+  .lock
+    overflow: hidden
+    touch-action: none
+    overscroll-behavior: none
+  .loaded
+    text-decoration: none
+
+// Цвета logos
+@each $color, $hex in vars.$colors
+  .cls-#{$color}
+    fill: $hex

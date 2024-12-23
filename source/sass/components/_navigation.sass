@@ -1,0 +1,59 @@
+
+@use "sass:math"
+@use "../base/_variables.sass" as vars
+@use "../base/_utilities.sass" as utils
+@use "../base/_grid.sass" as grid
+
+$navigationWidth: 100
+$navigationHeight: 20
+
+$navigationWto: math.div($navigationWidth, 2)
+$navigationHto: math.div($navigationHeight, 2)
+
+$navBorder: 100px
+
+$index: calc(1vw + 1vh)
+
+@each $color, $hex in vars.$colors
+  .nls-#{$color}
+    background-color: darken($hex, 20)
+    &::before
+      content: ''
+      display: block
+
+      width: var(--progress-#{$color})
+      height: 100%
+
+      background-color: $hex
+      border-radius: $navBorder
+
+.navigation
+  &__wrapper
+    display: flex
+    gap: 15px
+    &_element
+      @include utils.adaptiveValue("width", $navigationWidth, $navigationWto)
+      @include utils.adaptiveValue("height", $navigationHeight, $navigationHto)
+
+      border-radius: $navBorder
+
+@include grid.breakpoint("mobileSmall", "normal")
+  .navigation
+    position: absolute
+    left: 50%
+    transform: translate(-50%, 0) 
+    top: calc($index * 10)
+    width: 80%
+    &__wrapper
+      justify-content: space-between
+      &_element 
+        @include utils.adaptiveValue("width", $navigationWidth + 200, $navigationWto)
+        @include utils.adaptiveValue("height", $navigationHeight + 100, $navigationHto)
+
+
+.nav-active
+  $sizeActiveFrom: 150
+  $sizeActiveTo: math.div($sizeActiveFrom, 2) 
+  @include utils.adaptiveValue("width", $sizeActiveFrom, $sizeActiveTo)
+
+
