@@ -4,7 +4,7 @@ const $sound = document.getElementById('sound')
 const audio = document.getElementById('audio')
 
 audio.volume = 0.05
-audio.play()
+audio.pause()
 
 const lock = () => {
   $sound.dataset.mask = true
@@ -29,7 +29,7 @@ function animationOff() {
 }
 
 $sound.dataset.mask = false
-$sound.dataset.condition = 'on'
+$sound.dataset.condition = 'off'
 let condition = $sound.dataset.condition
 
 if ($sound.dataset.condition === 'off') {
